@@ -7,13 +7,12 @@ const meController = {}
 
 meController.getMeUser = async (req, res , next)=>{
     try {
-        console.log("out herer pass middleware")
-        const id = req.body
-        console.log(id)
+        // console.log("out herer pass middleware")
+        const id = req.body.id
+        // console.log(id)
         const result = await prisma.user.findFirst({
             where : {id : Number(id)}
         })
-        console.log(res)
         res.json({id : result.id , username : result.username })
 
         

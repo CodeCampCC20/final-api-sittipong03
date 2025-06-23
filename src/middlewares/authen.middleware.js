@@ -11,6 +11,7 @@ export const authCheck = (req , res , next)=>{
         const token = header.split(" ")[1]
         console.log(token)
         const payload = jwt.verify( token , process.env.SECRET_KEY , {algorithms : "HS256"})
+        req.body = payload
         next()
 
         
