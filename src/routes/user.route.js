@@ -7,9 +7,7 @@ const router = express.Router()
 
 router.get('/me' ,authCheck, meController.getMeUser)
 
-router.patch('/me' , (req , res)=>{
-    res.json({ message : " register doctor"})
-})
+router.patch('/me' , authCheck ,meController.patchMeUser)
 
 
 export default router

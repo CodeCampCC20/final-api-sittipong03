@@ -85,7 +85,7 @@ authController.doctorLogin = async(req ,res ,next)=>{
         specialization : user.specialization,
     }
     // console.log(payload)
-    const token = jwt.sign(payload , process.env.SECRET_KEY , { algorithm : "HS256" ,expiresIn : "1h"} )
+    const token = jwt.sign(payload , process.env.SECRET_KEY , { algorithm : "HS256" ,expiresIn : "1d"} )
     res.json({
         id : user.id,
         username : user.username,

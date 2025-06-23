@@ -4,17 +4,16 @@ import jwt from "jsonwebtoken"
 export const authCheck = (req , res , next)=>{
     try {
         const header = req.headers.authorization
-        console.log(header)
+        const body = req.body
+        // console.log(header)
         if(!header){
-            createError(401 , "Unauthorization")
+            createError(401 , "Authentication required")
         }
         const token = header.split(" ")[1]
-        console.log(token)
+        // console.log(token)
         const payload = jwt.verify( token , process.env.SECRET_KEY , {algorithms : "HS256"})
-        req.body = payload
+        req.data = payload
         next()
-
-        
 
 
     } catch (error) {
